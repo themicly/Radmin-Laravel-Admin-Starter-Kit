@@ -2,7 +2,7 @@
 <img src="https://github.com/RakibDevs/Radmin-Laravel-Admin-starter-with-REST-API-User-Roles-Permission/blob/main/radmin.jpg">
 
 
-
+[Radmin](https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211) is a premium template starter kit including REST API, Advanced user, roles & permission management , Serverside Datatable, Datatable Edit and Export( CSV, EXCEL, PRINT, PDF, COPY),Cache Clear, XSS protection and many more features.
 
 - [Getting started with Radmin](#getting-started-with-radmin)
     - [Installation](#installation)
@@ -10,9 +10,7 @@
     - [Create New Page](#create-new-page)
     - [Sidebar](#sidebar)
     - [REST API](#rest-api)
-    - [Roles & Permissions](#roles-permission)
-    - [Serverside Datatable](#serverside-datatable)
-    - [Editable Datatable](#editable-datatable)
+    - [Roles & Permissions](#roles-and-permission)
     - [Sources and Credits](#sources-and-credits)
 
 # Installation
@@ -148,11 +146,61 @@ In this template, I create some users with different roles and permission. Lets 
 
 If you'd like to open a group of routes for some sprcific permission in the route file follow this example,
 ```php
-            //only those have permission_name permission will get access
+//only those have permission_name permission will get access
+Route::group(['middleware' => 'can:permission_name1|permission_name2'], function(){
+    //route here
+});
 
-	        Route::group(['middleware' => 'can:permission_name1|permission_name2'], function(){
-	        	//route here
-	    	})
+// For single route
+Route::get('route-elements')->middleware('can:permission_name1|permission_name2');
+Route::get('route-elements')->middleware('can:permission_name');
+//
 ```
 
+Permission blade directive, 
+```php
+@can('permission_name')
+	//content here
+@endcan
+```
+
+Note: as ```Super Admin`` role has all the permissions. If you want to change Super Admin role name then you have to configure ```app/Providers/AuthServiceProvider.php```
+```php
+Gate::before(function ($user, $ability) {
+    return $user->hasRole('Super Admin') ? true : null; //if change name
+});
+```
+For more tutorials about roles and permissions you can visit [Laravel Permission](https://spatie.be/docs/laravel-permission/v3/introduction)
+
+# Sources and Credits 
+- Themekit Admin Template from Lavalite
+- laravel Passport
+- laravel-permission from Spaite
+- Laravel Datatables from Jack Mcdade
+- CellEdit from Ejbeaty
+- Amcharts
+- Ammap3
+- Bootstrap
+- C3.js from C3 Team
+- Chartist from Gion Kunz
+- D3.js from Mike Bostock
+- JSZip from Stuart Knightley
+- DataTables from SpryMedia Ltd
+- Flot-Charts from IOLA and Ole Laursen
+- FullCalendar from Adam Shaw
+- Ionicons from Ben Sperry
+- jQuery MiniColors from Cory LaViska
+- jQuery UI from jQuery Foundation
+- jquery.repeater from Brian Detering
+- Nestable jQuery Plugin from David Bushell
+- Owl Carousel from David Deutsch
+- perfect-scrollbar from Hyunje Jun
+- popper from Federico Zivolo
+- screenfull from Sindre Sorhus
+- Select2 from Select2
+- Summernote from Alan Hong
+- Tempus Dominus Bootstrap4 from Jonathan Peterson
+- Weather Icons from Dave Gandy
+
+Buy this premium starter kit [here](https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211)
 
