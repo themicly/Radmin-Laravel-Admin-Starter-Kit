@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Radmnin - Laravel Admin Starter Template</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Md. Rakibul Islam">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
+      
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    
+</head> 
+
+<body class="body-green">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo text-center ">
+                        <a href="index.html" class="text-white">
+                            <img src="assets/images/radmin-logo.png">
+                            <span class="text-bold">Radmin</span> - Laravel Admin Starter Template
+                        </a>
+                    </h1>
+                    
+                </div>
+                
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> DOCUMENTATION</h1> 
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: April 13, 2021 <span class="text-success">Version: 2.6.0</span></div>
+                </div><!--//doc-header-->
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="installation-section" class="doc-section">
+                                <h2 class="section-title">Installation</h2>
+                                <div id="database" class="section-block">
+                                    <h6>Database</h6>
+                                    <p>Create a database in phpmyadmin. Open <span class="badge badge-danger">.env</span> file and change following credentials 
+                                    </p>
+                                    <!--//code-block-->
+                                    <div class="code-block">
+                                        <pre><code class="language-git">DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password</code></pre>
+                                    </div>
+                                    <!--//code-block-->
+                                
+                                    <p>
+                                        Don't forget to import <span class="badge badge-success">database.sql</span> file which is located in projects database folder or <u>manually create a user in users table </u> and assign <span class="badge badge-danger">Super Admin</span> role. <strong class="text-success">Super Admin role can access all the premissions.</strong > 
+                                    </p>
+                                     <div class="callout-block callout-success">
+                                        <div class="icon-holder">
+                                            <i class="fas fa-thumbs-up"></i>
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Database Migration</h4>
+                                            <p>Run <code >php artisan migrate</code> to migrate database</p>
+                                        </div><!--//content-->
+                                    </div>
+                                </div>
+                                <div id="laravel-mix" class="section-block">
+                                    <h6>Laravel Mix</h6>
+                                    <!--//code-block-->
+                                    <p>Laravel Mix is a fluent API for defining webpack build steps for your Laravel application using several common CSS and JavaScript pre-processors. To initialize <a href="https://laravel.com/docs/8.x/mix">Laravel Mix</a></p>
+                                    <!--//code-block-->
+                                    <div class="code-block">
+                                        <pre><code class="language-php">// Install Node.js 
+npm install
+
+// Run all Mix tasks...
+npm run dev
+
+// Run all Mix tasks and minify output...
+npm run prod                               </code></pre>
+                                    </div>
+                                    <div class="code-block">
+                                        <p>Add css in webpack.mix.js  styles array </p>
+                                        <pre><code class="language-js">mix.styles([
+    'public/plugins/bootstrap/dist/css/bootstrap.min.css',
+    .......................................
+], 'public/all.css');
+</code></pre>
+                                        <p>Add js in webpack.mix.js scripts array</p>
+                                        <pre><code class="language-js">mix.scripts([
+    'public/src/js/vendor/modernizr-2.8.3.min.js',
+    .......................................
+], 'public/all.js');
+</code></pre>
+                                    </div>
+                                    <!--//code-block-->
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="page-structure-section" class="doc-section">
+                                <h2 class="section-title">Page Architecture</h2>
+                                <div id="main" class="section-block">
+                                    
+                                    <div class="code-block">
+                                        <h6>Main Layout</h6>
+                                        <p>Main layout structure located in <u class="text-danger">resources/views/layouts/main.blade.php</u></p>
+                                        <p><pre><code class="language-markup">&#x3C;!doctype html&#x3E;
+&#x3C;html lang=&#x22;{{ str_replace(&#x27;_&#x27;, &#x27;-&#x27;, app()-&#x3E;getLocale()) }}&#x22; &#x3E;
+&#x3C;head&#x3E;
+&#x9;&#x3C;!-- initiate head with meta tags, css and script --&#x3E;
+&#x9;@include(&#x27;include.head&#x27;)
+&#x3C;/head&#x3E;
+&#x3C;body id=&#x22;app&#x22;&#x3E;
+    &#x3C;div class=&#x22;wrapper&#x22;&#x3E;
+    &#x9;&#x3C;!-- initiate header--&#x3E;
+    &#x9;@include(&#x27;include.header&#x27;)
+    &#x9;&#x3C;div class=&#x22;page-wrap&#x22;&#x3E;
+&#x9;    &#x9;&#x3C;!-- initiate sidebar--&#x3E;
+&#x9;    &#x9;@include(&#x27;include.sidebar&#x27;)
+&#x9;    &#x9;&#x3C;div class=&#x22;main-content&#x22;&#x3E;
+&#x9;    &#x9;&#x9;&#x3C;!-- yeild contents here --&#x3E;
+&#x9;    &#x9;&#x9;@yield(&#x27;content&#x27;)
+&#x9;    &#x9;&#x3C;/div&#x3E;
+&#x9;    &#x9;&#x3C;!-- initiate chat section--&#x3E;
+&#x9;    &#x9;@include(&#x27;include.chat&#x27;)
+&#x9;    &#x9;&#x3C;!-- initiate footer section--&#x3E;
+&#x9;    &#x9;@include(&#x27;include.footer&#x27;)
+    &#x9;&#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;    
+&#x9;&#x3C;!-- initiate modal menu section--&#x3E;
+&#x9;@include(&#x27;include.modalmenu&#x27;)
+&#x9;&#x3C;!-- initiate scripts--&#x3E;
+&#x9;@include(&#x27;include.script&#x27;)&#x9;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;</code></pre></p>        
+                                    </div>
+                                </div><!--//section-block-->
+                                <div id="blank" class="section-block">
+                                    
+                                    <div class="code-block">
+                                        <h6>Blank Page</h6>
+                                        <p>This is a common blank page structure.</p>
+                                        <pre><code class="language-markup">@extends(&#x27;layouts.main&#x27;) 
+
+@section(&#x27;content&#x27;)
+    &#x3C;!-- push external head elements to head --&#x3E;
+    @push(&#x27;head&#x27;)
+        &#x3C;title&#x3E;Page title | Site title&#x3C;/title&#x3E;
+        &#x3C;!-- add some inline style or css file if any --&#x3E;
+        &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;{{ asset(&#x27;file-path&#x27;)}}&#x22;&#x3E;
+        &#x3C;style type=&#x22;text/css&#x22;&#x3E;
+        &#x9;/* inline css
+        &#x3C;/style&#x3E;
+    @endpush
+    &#x3C;div class=&#x22;container-fluid&#x22;&#x3E;
+    &#x9;&#x3C;!-- page contents here --&#x3E;
+    &#x3C;/div&#x3E;
+    &#x3C;!-- push external js if any --&#x3E;
+    @push(&#x27;script&#x27;) 
+        &#x3C;script src=&#x22;{{ asset(&#x27;script-path&#x27;) }}&#x22;&#x3E;&#x3C;/script&#x3E;
+    @endpush
+@endsection</code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                <div id="sidebar" class="section-block">
+                                    <h6>Sidebar</h6>
+                                    
+                                    <div class="code-block">
+                                        <p>Basically this template has two sidebar. First one is left sidebar which is used as menu and second one is used for chatlist
+
+If you want to add a new menu items in the sidebar open <u class="text-danger">resources/views/include/sidebar.blade.php</u> and add menu</p>
+                                        <pre><code class="language-php">&#x3C;div class=&#x22;nav-item {{ ($segment1 == &#x27;menu-route&#x27;) ? &#x27;active&#x27; : &#x27;&#x27; }}&#x22;&#x3E;
+     &#x3C;a href=&#x22;{{url(&#x27;menu-route&#x27;)}}&#x22;&#x3E;
+         &#x3C;i class=&#x22;ik ik-bar-chart-2&#x22;&#x3E;&#x3C;/i&#x3E;
+         &#x3C;span&#x3E;Menu Name&#x3C;/span&#x3E;
+     &#x3C;/a&#x3E;
+&#x3C;/div&#x3E;</code></pre>
+                                    </div><!--//code-block-->
+                                    <p>Note <span class="badge badge-danger">$segment1</span> is use to determine active url</p>
+                                    <div class="code-block">
+                                        <pre><code class="language-php">$segment1 = request()->segment(1);</code></pre>
+                                    </div>
+                                    <p>Suppose https://rakibul.dev/<u class="text-danger">portfolio-cat</u>/<u class="text-danger">core-php</u>/ is the basic url. here <u>portfolio-cat</u> is <span class="badge badge-danger">segment(1)</span> and <u>core-php</u> is <span class="badge badge-danger">segment(2)</span></p>
+                                </div><!--//section-block-->
+                                
+                            </section><!--//doc-section-->
+                            <section id="rest-api" class="doc-section">
+                                <h2 class="section-title">REST API</h2>
+                                <div class="section-block">
+                                    <p>A low level HTTP based CRUD and basic authentication API that used Laravel Passport for Authentication.
+                                    </p>
+                                    <p>Get documentation here, <a href="https://documenter.getpostman.com/view/11223504/Szmh1vqc?version=latest">here.</a></p>
+                                </div>
+                                <div id="connect" class="section-block">
+                                    <h6>Connect API</h6>
+                                    <p>After successful login, an <span class="badge badge-success">access_token</span> will be provided to user. This token will be used for further requests. </p>
+                                    <p >Access token will be like, </p>
+                                    <p class="small text-danger " style="white-space: pre-wrap;word-break: break-all;">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvd29ya3N1aXRlLmRldlwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE1ODAyODA3MjksImV4cCI6MTYxMTkwMzEyOCwibmJmIjoxNTgwMjgwNzI5LCJqdGkiOiJBYXE1QkdnT0p1dG1ycUdIIiwic3ViIjoxLCJwcnYiOiI4MThmNWM5OGFjZTIzNzUzMmQ5ZDQ5NDNmZDhlZmI1NDBiODU1YjQyIiwicmVtZW1iZXIiOjEsInR5cGUiOjF9.wK4OhcwUWa9uwFboqkZCOznjnRnjU19yzoCGCKIZUY0</p>
+                                    <p>Set <span class="badge badge-success">Authorization</span> header to connect API in  request header </p>
+                                    <pre><code class="language-php">'headers' => [
+    'Accept' => 'application/json',
+    'Authorization' => 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvd29ya3N1aXRlLmRldlwvYXBpXC92MVwvYXV0aFwvbG9naW4iLCJpYXQiOjE1ODAyODA3MjksImV4cCI6MTYxMTkwMzEyOCwibmJmIjoxNTgwMjgwNzI5LCJqdGkiOiJBYXE1QkdnT0p1dG1ycUdIIiwic3ViIjoxLCJwcnYiOiI4MThmNWM5OGFjZTIzNzUzMmQ5ZDQ5NDNmZDhlZmI1NDBiODU1YjQyIiwicmVtZW1iZXIiOjEsInR5cGUiOjF9.wK4OhcwUWa9uwFboqkZCOznjnRnjU19yzoCGCKIZUY0',
+],</code></pre>
+                                </div>
+                                <div class="callout-block callout-warning">
+                                    <div class="icon-holder">
+                                        <i class="fas fa-bug"></i>
+                                    </div><!--//icon-holder-->
+                                    <div class="content">
+                                        <h4 class="callout-title">Authorization Header</h4>
+                                        <p>Authorization value must follow bearer token structure <code>Bearer access_token</code></p>
+                                    </div><!--//content-->
+                                </div><!--//callout-block-->
+                                <div id="endpoints" class="section-block">
+                                    <h6>Available Endpoints</h6>
+                                    <div class="table-responsive">
+                                        <table  class="table" border="1">
+                                            <thead>
+                                                <tr>
+                                                    <th>Method</th>
+                                                    <th>URl</th>
+                                                    <th>Parameters</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong class="text-warning">POST</strong></td>
+                                                    <td>/api/v1/login</td>
+                                                    <td><code>{email, password}</code></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/profile</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-warning">POST</strong></td>
+                                                    <td>/api/v1/change-password</td>
+                                                    <td><code>{old_password, password, password_confirmation}</code></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-warning">POST</strong></td>
+                                                    <td>/api/v1/update-profile</td>
+                                                    <td><code>{name, email}</code></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/logout</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr><td colspan="3"></tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/users</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-warning">POST</strong></td>
+                                                    <td>/api/v1/create_user</td>
+                                                    <td><code>{name, email, password, password_confirmation, role[]}</code></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/user/<span class="text-danger">{id}</span></td>
+                                                    <td><p class="text-muted">{id} should replaced with value</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/user/delete/<span class="text-danger">{id}</span></td>
+                                                    <td><p class="text-muted">{id} should replaced with value</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-warning">POST</strong></td>
+                                                    <td>/api/v1/user/change-role/<span class="text-danger">{id}</span></td>
+                                                    <td><p class="text-muted">{id} should replaced with value</p></td>
+                                                 </tr>
+                                                <tr><td colspan="3"></tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/roles</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-warning">POST</strong></td>
+                                                    <td>/api/v1/role/create</td>
+                                                    <td><code>{name, permissions[]}</code></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/role/<span class="text-danger">{id}</span></td>
+                                                    <td><p class="text-muted">{id} should replaced with value</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/role/delete/<span class="text-danger">{id}</span></td>
+                                                    <td><p class="text-muted">{id} should replaced with value</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-warning">POST</strong></td>
+                                                    <td>/api/v1/role/change-permission/<span class="text-danger">{id}</span></td>
+                                                    <td><p class="text-muted">{id} should replaced with value</p></td>
+                                                 </tr>
+                                                <tr><td colspan="3"></tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/permissions</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-warning">POST</strong></td>
+                                                    <td>/api/v1/permission/create</td>
+                                                    <td><code>{name}</code></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/permission/<span class="text-danger">{id}</span></td>
+                                                    <td><p class="text-muted">{id} should replaced with value</p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong class="text-success">GET</strong></td>
+                                                    <td>/api/v1/permission/delete/<span class="text-danger">{id}</span></td>
+                                                    <td><p class="text-muted">{id} should replaced with value</p></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="roles-permission" class="doc-section">
+                                <h2 class="section-title">Roles & Permission</h2>
+                                <div class="section-block">
+                                    <p>In this template, I create some users with different roles and permission. Lets see, how to apply this permissions in any where</p>
+                                    <div class="code-block">
+                                        <h6>Grouped Route</h6>
+                                        <pre><code class="language-php">//only those have permission_name permission will get access
+
+Route::group(['middleware' => 'can:permission_name1|permission_name2'], function(){
+    //route here
+})</code></pre>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>Single Route</h6>
+                                        <pre><code class="language-php">Route::get('route-elements')->middleware('can:permission_name1|permission_name2');
+
+Route::get('route-elements')->middleware('can:permission_name');</code></pre>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>Blade Component</h6>
+                                        <pre><code class="language-php">@can('permission_name')
+    content here
+@endcan</code></pre>
+                                    </div>
+                                    <div class="code-block">
+                                        <h6>Super Admin</h6>
+                                        <p>Note: as <span class="badge badge-success">Super Admin</span> role has all the permissions. Add selected <span class="badge badge-success">Super Admin</span> in <u class="text-danger">app/provider/AuthServiceProvider.php</u> .</p>
+                                        <pre><code class="language-php">Gate::before(function ($user, $ability) {
+    return $user->hasRole('Super Admin') ? true : null; //if change name
+});</code></pre>
+                                        <p>For more tutorials about roles and permissions you can visit <a href="https://docs.spatie.be/laravel-permission/v3/introduction/">here</a></p>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="editable-datatable" class="doc-section">
+                                <h2 class="section-title">Editable Datatable (ejbeaty)</h2>
+                                <div class="section-block">
+                                    <p>Cell edit plugin allows cells within a DataTable to be editable. When a cell is click on, an input field will appear. When focus is lost on the input and the underlying DataTable object will be updated and the table will be redrawn. The new value is passed to a callback function, along with it's row, allowing for easy server-side data updates.</p>
+                                    <img class="img-fluid" src="assets/images/editable-datatable.JPG" alt="Editable Datatable">
+                                    <pre><code class="language-js">var dTable = $('#table_name').DataTable({});
+dTable.MakeCellsEditable({
+    "onUpdate": callFunction, //call function to update in backend
+    "inputCss":'form-control',
+    "columns": [0], // define column numbers to be editable
+    "confirmationButton": { // could also be true
+        "confirmCss": 'btn btn-success',
+        "cancelCss": 'btn btn-danger'
+    },
+    "inputTypes": [
+        {
+            "column": 0,
+            "type": "text",
+            "options": null
+        }
+        // set column properties if add a new one
+        
+    ]
+});
+
+// update function
+
+function callFunction(updatedCell, updatedRow, oldValue) {
+    //do anything
+}</code></pre>
+                                </div>
+
+                            </section>
+                            <section id="source-credit" class="doc-section">
+                                <h2 class="section-title">Source & Credits</h2>
+                                <div class="section-block">
+                                    <ul>
+                                        <li>Themekit Admin Template from Lavalite</li>
+                                        <li>laravel Passport</li>
+                                        <li>laravel-permission from Spaite</li>
+                                        <li>Laravel Datatables from Jack Mcdade</li>
+                                        <li>CellEdit from Ejbeaty</li>
+                                        <li>Amcharts</li>
+                                        <li>Ammap3</li>
+                                        <li>Bootstrap</li>
+                                        <li>C3.js from C3 Team</li>
+                                        <li>Chartist from Gion Kunz</li>
+                                        <li>D3.js from Mike Bostock</li>
+                                        <li>JSZip from Stuart Knightley</li>
+                                        <li>DataTables from SpryMedia Ltd</li>
+                                        <li>Flot-Charts from IOLA and Ole Laursen</li>
+                                        <li>FullCalendar from Adam Shaw</li>
+                                        <li>Ionicons from Ben Sperry</li>
+                                        <li>jQuery MiniColors from Cory LaViska</li>
+                                        <li>jQuery UI from jQuery Foundation</li>
+                                        <li>jquery.repeater from Brian Detering</li>
+                                        <li>Nestable jQuery Plugin from David Bushell</li>
+                                        <li>Owl Carousel from David Deutsch</li>
+                                        <li>perfect-scrollbar from Hyunje Jun</li>
+                                        <li>popper from Federico Zivolo</li>
+                                        <li>screenfull from Sindre Sorhus</li>
+                                        <li>Select2 from Select2</li>
+                                        <li>Summernote from Alan Hong</li>
+                                        <li>Tempus Dominus Bootstrap4 from Jonathan Peterson</li>
+                                        <li>Weather Icons from Dave Gandy</li>
+                                    </ul>
+                                </div>
+                            </section>
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+                            
+                                <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                                    <a class="nav-link scrollto" href="#installation-section">Installation</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#database">Database</a>
+                                        <a class="nav-link scrollto" href="#laravel-mix">Laravel Mix</a>
+                                    </nav><!--//nav-->
+                                    <a class="nav-link scrollto" href="#code-section">Page Architecture</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#main">Main Layout</a>
+                                        <a class="nav-link scrollto" href="#blank">Blank Page</a>
+                                        <a class="nav-link scrollto" href="#sidebar">Sidebar</a>
+                                    </nav><!--//nav-->
+                                    <a class="nav-link scrollto" href="#rest-api">REST API</a>
+                                    <nav class="doc-sub-menu nav flex-column">
+                                        <a class="nav-link scrollto" href="#connect">Connect API</a>
+                                        <a class="nav-link scrollto" href="#endpoints">API Endpoints</a>                                    </nav><!--//nav-->
+                                    <a class="nav-link scrollto" href="#roles-permission">Roles & Permission</a>
+                                    <a class="nav-link scrollto" href="#editable-datatable">Editable Datatable</a>
+                                    <a class="nav-link scrollto" href="#source-credit">Source & Credits</a>
+                                </nav><!--//doc-menu-->
+                            
+                        </div>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+        
+        <div id="promo-block" class="promo-block">
+            <div class="container">
+                <div class="promo-block-inner">
+                    <h3 class="promo-title text-center"><i class="fas fa-heart"></i> <a href="https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211" target="_blank">Are you stuck with setting up an admin panel in laravel?</a></h3>
+                    <div class="row">
+                        <div class="figure-holder col-lg-5 col-md-6 col-12">
+                            <div class="figure-holder-inner">
+                                <a href="https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211" target="_blank"><img class="img-fluid" src="assets/images/radmin-banner.png" alt="Instance Theme" /></a>
+                                <a class="mask" href="https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211"><i class="icon fa fa-heart pink"></i></a>
+                                
+                            </div>
+                        </div><!--//figure-holder-->
+                        <div class="content-holder col-lg-7 col-md-6 col-12">
+                            <div class="content-holder-inner">
+                                <div class="desc">
+                                    <h4 class="content-title"><strong> Radmin - Laravel Admin starter with REST API, User Roles & Permission</strong></h4>
+                                    <p>Check out <a href="https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211" target="_blank">Radmin</a> - a Laravel starter kit REST API, Advanced user, roles & permission management , Serverside Datatable, Datatable Edit and Export( CSV, EXCEL, PRINT, PDF, COPY), Cache Management, XSS protection <strong class="highlight">with advanced form elements, chat wizard, charts, widgets and 30+ other glamorous plugins. </strong>.</p><p>Kikstar with Radmin to <strong class="highlight">boost your development.</strong>. </p>
+                                    <a class="btn btn-cta" href="http://radmin.tecvaly.com" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                                    
+                                </div><!--//desc-->
+                            </div><!--//content-holder-inner-->
+                        </div><!--//content-holder-->
+                    </div><!--//row-->
+                </div><!--//promo-block-inner-->  
+            </div><!--//container-->
+        </div><!--//promo-block-->
+        
+    </div><!--//page-wrapper-->
+    
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>      
+    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>                                                             
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    
+</body>
+</html> 
+
