@@ -25,26 +25,16 @@
 
 <body class="body-green">
     <div class="page-wrapper">
-        <!-- ******Header****** -->
-        <header id="header" class="header">
-            <div class="container">
-                <div class="branding">
-                    <h1 class="logo text-center ">
-                        <a href="index.html" class="text-white">
-                            <img src="assets/images/radmin-logo.png">
-                            <span class="text-bold">Radmin</span> - Laravel Admin Starter Template
-                        </a>
-                    </h1>
-                    
-                </div>
-                
-            </div><!--//container-->
-        </header><!--//header-->
         <div class="doc-wrapper">
             <div class="container">
-                <div id="doc-header" class="doc-header text-center">
-                    <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> DOCUMENTATION</h1> 
-                    <div class="meta"><i class="far fa-clock"></i> Last updated: July 10, 2021 <span class="text-success">Version: 3.0.0</span></div>
+                <div id="doc-header" class="doc-header">
+                    <h1 class="doc-title">
+                        <a  href="https://arthemic.com/products/radmin">
+                            <img height="40" src="assets/images/radmin-logo.png"> 
+                            Radmin - Laravel Admin Starter Kit
+                        </a>
+                    </h1> 
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: September 29, 2021 <span class="text-success">Version: 3.1.0</span></div>
                 </div><!--//doc-header-->
                 <div class="doc-body row">
                     <div class="doc-content col-md-9 col-12 order-1">
@@ -54,9 +44,13 @@
                                     <i class="fas fa-thumbs-up"></i>
                                 </div><!--//icon-holder-->
                                 <div class="content">
-                                    <h4 class="callout-title">Version 3.0.0 has been released!</h4>
-                                    <p>Complete inventory and POS pages added</p>
+                                    <h4 class="callout-title">Version 3.1.0 has been released!</h4>
+                                    <p>New POS layout, Database Seeder, Models directory and improved PSR compatibility</p>
                                 </div><!--//content-->
+                            </div>
+                            <div style="position:relative;">
+                                <span class="badge badge-danger" style="position:absolute;">New</span>
+                                <img style="width:100%" src="assets/images/pos-layout.png">
                             </div>
                             <section id="installation-section" class="doc-section">
                                 <h2 class="section-title">Installation</h2>
@@ -80,8 +74,9 @@ DB_PASSWORD=your_database_password</code></pre>
                                             <i class="fas fa-thumbs-up"></i>
                                         </div><!--//icon-holder-->
                                         <div class="content">
-                                            <h4 class="callout-title">Database Migration</h4>
+                                            <h4 class="callout-title">Database Migration and Seed</h4>
                                             <p>Run <code >php artisan migrate</code> to migrate database</p>
+                                            <p>Run <code >php artisan db:seed</code> to seed database</p>
                                         </div><!--//content-->
                                     </div>
                                 </div>
@@ -487,7 +482,7 @@ function callFunction(updatedCell, updatedRow, oldValue) {
                     <div class="row">
                         <div class="figure-holder col-lg-5 col-md-6 col-12">
                             <div class="figure-holder-inner">
-                                <a href="https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211" target="_blank"><img class="img-fluid" src="assets/images/radmin-banner.png" alt="Instance Theme" /></a>
+                                <a href="https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211" target="_blank"><img class="img-fluid" src="assets/images/banner.jpg" alt="Instance Theme" /></a>
                                 <a class="mask" href="https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211"><i class="icon fa fa-heart pink"></i></a>
                                 
                             </div>
@@ -497,7 +492,7 @@ function callFunction(updatedCell, updatedRow, oldValue) {
                                 <div class="desc">
                                     <h4 class="content-title"><strong> Radmin - Laravel Admin starter with REST API, User Roles & Permission</strong></h4>
                                     <p>Check out <a href="https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211" target="_blank">Radmin</a> - a Laravel starter kit REST API, Advanced user, roles & permission management , Serverside Datatable, Datatable Edit and Export( CSV, EXCEL, PRINT, PDF, COPY), Cache Management, XSS protection <strong class="highlight">with advanced form elements, chat wizard, charts, widgets and 30+ other glamorous plugins. </strong>.</p><p>Kikstar with Radmin to <strong class="highlight">boost your development.</strong>. </p>
-                                    <a class="btn btn-cta" href="http://radmin.tecvaly.com" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                                    <a class="btn btn-cta" href="http://radmin.arthemic.com" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
                                     
                                 </div><!--//desc-->
                             </div><!--//content-holder-inner-->
@@ -512,7 +507,7 @@ function callFunction(updatedCell, updatedRow, oldValue) {
     <footer id="footer" class="footer text-center">
         <div class="container">
             <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+            <small class="copyright">All rights reserved by <a href="https://arthemic.com">Arthemic</a> Designed with <i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
             
         </div><!--//container-->
     </footer><!--//footer-->
