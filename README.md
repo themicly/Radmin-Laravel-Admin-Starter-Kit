@@ -6,3 +6,10 @@
 
 Buy this premium starter kit [here](https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211)
 
+### v3.2.0 Release Notes
+- Postman Collection - <a href="https://www.postman.com/collections/d716f8e9666f92249d62">See here</a>
+- Refactoring Code for PHP 8
+- Added API Request Validator
+- Fixed Roles and Permission
+- Updated API Response
+
