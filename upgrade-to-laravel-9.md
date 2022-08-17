@@ -12,7 +12,7 @@ Please update the following dependencies in your application's `composer.json` f
 In addition,  please replace `"facade/ignition": "^2.3.6"` with `"spatie/laravel-ignition": "^1.0"`. and remove `fideloper/proxy`.
 
 #### Trusted Proxies
-If you are upgrading your Laravel 8 project to Laravel 9 by importing your existing application code into a totally new Laravel 9 application skeleton, you may need to update your application's `trusted proxy` middleware.
+Please update your application's `trusted proxy` middleware.
 Within your `app/Http/Middleware/TrustProxies.php` file, update use `Fideloper\Proxy\TrustProxies as Middleware` to use `Illuminate\Http\Middleware\TrustProxies as Middleware`.
 
 Next, within `app/Http/Middleware/TrustProxies.php`, you should update the $headers property definition:
