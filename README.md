@@ -11,5 +11,8 @@ Buy this premium starter kit [here](https://codecanyon.net/item/laravel-admin-te
 - Refactoring Code for PHP 8
 - Added API Request Validator
 - Fixed Roles and Permission
-- Updated API Response
+- Updated API Respons 
+
+
+Click to see [Laravel 9 Upgrade Guideline](https://github.com/ArthemicOfficial/Radmin-Laravel-Admin-Starter-Kit/blob/main/upgrade-to-laravel-9.md)
 
