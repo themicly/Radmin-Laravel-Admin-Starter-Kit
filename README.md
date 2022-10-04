@@ -14,5 +14,5 @@ Buy this premium starter kit [here](https://codecanyon.net/item/laravel-admin-te
 - Updated API Respons 
 
 
-Click to see [Laravel 9 Upgrade Guideline](https://github.com/ArthemicOfficial/Radmin-Laravel-Admin-Starter-Kit/blob/main/upgrade-to-laravel-9.md)
+Click to see [Laravel 9 Upgrade Guideline](https://github.com/themicly/Radmin-Laravel-Admin-Starter-Kit/blob/main/upgrade-to-laravel-9.md)
 
