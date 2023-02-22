@@ -1,4 +1,4 @@
-## [Radmin - Laravel Admin starter with REST API User Roles Permission](https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211) v3.2.0
+## [Radmin - Laravel Admin starter with REST API User Roles Permission](https://codecanyon.net/item/laravel-admin-template-roles-permission-editable-datatables/26005211) v3.4.0
 <img src="https://github.com/RakibDevs/Radmin-Laravel-Admin-starter-with-REST-API-User-Roles-Permission/blob/main/radmin.jpg">
 
 
