@@ -637,6 +637,9 @@ select {
   background: #58bbee;
   color: #fff;
 }
+.callout-primary{
+  background: #faeded;
+}
 
 .callout-success {
   background: #75c181;
