@@ -44,3 +44,5 @@ docker compose exec php php artisan migrate --seed
 
 If you are using old version, Click to see [Laravel 9 Upgrade Guideline](https://github.com/themicly/Radmin-Laravel-Admin-Starter-Kit/blob/main/upgrade-to-laravel-9.md)
 
+<a href="https://www.producthunt.com/posts/radmin-laravel-dashboard-starter?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-radmin&#0045;laravel&#0045;dashboard&#0045;starter" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=384432&theme=light" alt="Radmin&#0032;&#0045;&#0032;Laravel&#0032;Dashboard&#0032;Starter - Take&#0032;your&#0032;dashboard&#0032;to&#0032;the&#0032;next&#0032;level&#0033; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
